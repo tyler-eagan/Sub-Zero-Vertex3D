@@ -1,23 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Extend the Reach of 3D | Vertex for ACME</title>
+  <title>Stream 3D, Not Files | Vertex for Sub-Zero</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="See how Vertex helps ACME stream 3D CAD and PLM data securely to any device—no files, no installs, no rework." />
+  <meta name="description"
+        content="See how Vertex helps Sub-Zero stream CAD and PLM data securely to any device—no files, no installs, no rework." />
+
+  <!-- Poppins font from Vertex brand guidelines -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-dark: #050816;
-      --bg-section: #020617;
-      --bg-card: #0b1220;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --accent: #1d4ed8; /* Vertex-style blue */
-      --accent-soft: rgba(37, 99, 235, 0.15);
-      --border-subtle: #1f2937;
+      /* Vertex primary palette (from brand guidelines) */
+      --light-blue: #00C2FF;
+      --light-green: #00CC00;
+      --orange: #FF9500;
+      --charcoal: #444444;
+      --white: #FFFFFF;
+
+      /* Grays for UI */
+      --gray-900: #111827;
+      --gray-800: #1F2933;
+      --gray-700: #374151;
+      --gray-600: #4B5563;
+      --gray-500: #6B7280;
+      --gray-300: #D1D5DB;
+      --gray-100: #F3F4F6;
+
       --radius-lg: 18px;
-      --max-width: 1080px;
+      --max-width: 1120px;
     }
 
     * {
@@ -26,9 +40,9 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
-      color: var(--text-main);
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
       line-height: 1.6;
     }
 
@@ -41,21 +55,24 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background: var(--white);
     }
 
+    /* HEADER */
+
     header {
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-      background: rgba(5, 8, 22, 0.92);
-      backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 20;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid #E5E7EB;
     }
 
     .nav-wrap {
       margin: 0 auto;
       max-width: var(--max-width);
-      padding: 0.85rem 1.25rem;
+      padding: 0.8rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -65,60 +82,100 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.8rem;
+      min-width: 0;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      min-width: 0;
     }
 
     .logo img {
-      height: 28px;
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-text-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--charcoal);
     }
 
     .logo-tagline {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--text-muted);
+      color: var(--gray-500);
     }
 
     .nav-pill {
       font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
+      padding: 0.28rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: var(--text-muted);
+      border: 1px solid #E5E7EB;
+      background: #F9FAFB;
+      color: var(--gray-600);
+      white-space: nowrap;
     }
 
     .nav-cta {
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .btn {
       border-radius: 999px;
       border: 1px solid transparent;
-      padding: 0.6rem 1.3rem;
+      padding: 0.65rem 1.35rem;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #38bdf8);
-      color: #f9fafb;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+      background: linear-gradient(135deg, var(--light-blue), #40A9FF);
+      color: #F9FAFB;
+      box-shadow: 0 12px 30px rgba(0, 194, 255, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 194, 255, 0.38);
     }
 
     .btn-outline {
-      background: transparent;
-      color: var(--text-main);
-      border-color: rgba(148, 163, 184, 0.5);
+      background: var(--white);
+      color: var(--charcoal);
+      border-color: #D1D5DB;
+    }
+
+    .btn-outline:hover {
+      background: #F9FAFB;
+    }
+
+    .accent-bar {
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        var(--light-green) 0%,
+        var(--orange) 40%,
+        var(--light-blue) 100%
+      );
     }
 
     main {
@@ -134,18 +191,21 @@
       margin: 0 auto;
     }
 
-    /* Hero */
+    /* HERO */
+
     .hero {
       padding-top: 3rem;
       padding-bottom: 3rem;
+      background: radial-gradient(circle at top left, #E5F8FF 0, #FFFFFF 60%);
+      border-bottom: 1px solid #E5E7EB;
     }
 
     .hero-grid {
       display: grid;
-      gap: 2.25rem;
+      gap: 2.5rem;
     }
 
-    @media (min-width: 880px) {
+    @media (min-width: 900px) {
       .hero-grid {
         grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
         align-items: center;
@@ -158,50 +218,49 @@
       gap: 0.4rem;
       padding: 0.18rem 0.7rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: #E1F4FF;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--text-muted);
-      margin-bottom: 0.9rem;
+      color: var(--light-blue);
+      margin-bottom: 1rem;
     }
 
     .eyebrow span {
-      display: inline-flex;
       width: 6px;
       height: 6px;
       border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+      background: var(--light-green);
     }
 
     h1 {
-      font-size: clamp(2.1rem, 3vw + 1.5rem, 3rem);
-      line-height: 1.1;
+      font-size: clamp(2.3rem, 3vw + 1.6rem, 3.2rem);
+      line-height: 1.08;
       letter-spacing: -0.03em;
-      margin: 0 0 0.8rem;
+      margin: 0 0 0.9rem;
+      color: var(--charcoal);
     }
 
     .hero-sub {
-      font-size: 0.98rem;
-      color: var(--text-muted);
+      font-size: 1rem;
+      color: var(--gray-600);
       max-width: 34rem;
     }
 
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: 1.4rem 0 1.6rem;
+      gap: 0.55rem;
+      margin: 1.5rem 0 1.6rem;
     }
 
     .pill {
       font-size: 0.75rem;
-      padding: 0.28rem 0.7rem;
+      padding: 0.26rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
+      border: 1px solid #E5E7EB;
+      background: #FFFFFF;
+      color: var(--gray-600);
     }
 
     .hero-cta-row {
@@ -209,33 +268,33 @@
       flex-wrap: wrap;
       gap: 0.75rem;
       align-items: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .note {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: var(--gray-500);
     }
 
     .hero-card {
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.34), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      padding: 1.4rem;
-      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.9);
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      box-shadow: 0 22px 40px rgba(15, 23, 42, 0.08);
+      padding: 1.5rem 1.4rem;
     }
 
     .hero-card h2 {
       margin: 0 0 0.8rem;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      color: var(--charcoal);
     }
 
     .hero-stat-grid {
       display: grid;
-      gap: 0.9rem;
+      gap: 0.85rem;
       margin-top: 0.8rem;
-      font-size: 0.85rem;
-      color: #e5e7eb;
+      font-size: 0.86rem;
     }
 
     @media (min-width: 640px) {
@@ -245,36 +304,39 @@
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #bfdbfe;
+      color: var(--gray-500);
     }
 
     .stat-value {
       font-size: 1rem;
       font-weight: 600;
+      color: var(--charcoal);
     }
 
-    /* Sections */
-    .section-heading {
-      font-size: 1.5rem;
-      margin: 0 0 0.5rem;
-    }
+    /* SECTIONS */
 
     .section-kicker {
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.2rem;
+      color: var(--gray-500);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-heading {
+      font-size: 1.6rem;
+      margin: 0 0 0.6rem;
+      color: var(--charcoal);
     }
 
     .section-lede {
-      color: var(--text-muted);
+      color: var(--gray-600);
       font-size: 0.95rem;
       max-width: 40rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
     }
 
     .grid {
@@ -293,28 +355,29 @@
     }
 
     .card {
-      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), var(--bg-card));
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
       padding: 1.3rem 1.3rem 1.1rem;
     }
 
     .card h3 {
-      margin: 0 0 0.4rem;
+      margin: 0 0 0.45rem;
       font-size: 1rem;
+      color: var(--charcoal);
     }
 
     .card p {
       margin: 0 0 0.6rem;
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: var(--gray-600);
     }
 
     .card ul {
-      margin: 0.3rem 0 0;
+      margin: 0.35rem 0 0;
       padding-left: 1.1rem;
       font-size: 0.9rem;
-      color: var(--text-main);
+      color: var(--gray-700);
     }
 
     .card li {
@@ -323,76 +386,83 @@
 
     .tag {
       display: inline-flex;
-      padding: 0.18rem 0.6rem;
+      padding: 0.16rem 0.6rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #bfdbfe;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.11em;
+      background: #E6F9F0;
+      color: var(--light-green);
+      margin-bottom: 0.45rem;
+    }
+
+    .tag.blue {
+      background: #E1F4FF;
+      color: var(--light-blue);
+    }
+
+    .tag.orange {
+      background: #FFF4E5;
+      color: var(--orange);
     }
 
     .badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 0.75rem;
+      margin-top: 0.9rem;
     }
 
     .badge {
       font-size: 0.78rem;
       padding: 0.18rem 0.6rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      color: var(--gray-600);
     }
 
-    .muted {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+    /* CTA SECTION */
 
-    /* CTA section */
     .cta-section {
-      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.3), #020617);
-      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      background: linear-gradient(135deg, #F3FAFF, #FFFFFF);
+      border-top: 1px solid #E5E7EB;
     }
 
     .cta-box {
       border-radius: 22px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 1.8rem 1.6rem;
+      background: #FFFFFF;
+      border: 1px solid #DCEBFF;
+      padding: 1.9rem 1.7rem;
       display: grid;
-      gap: 1.4rem;
+      gap: 1.5rem;
     }
 
     @media (min-width: 880px) {
       .cta-box {
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
         align-items: center;
       }
     }
 
     .cta-box h2 {
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.6rem;
       font-size: 1.4rem;
+      color: var(--charcoal);
     }
 
     .cta-box p {
       margin: 0;
-      color: var(--text-muted);
+      color: var(--gray-600);
       font-size: 0.95rem;
     }
 
     footer {
-      padding: 1.8rem 1.25rem 2.2rem;
-      border-top: 1px solid rgba(15, 23, 42, 1);
-      background: #020617;
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      padding: 1.7rem 1.25rem 2.1rem;
+      border-top: 1px solid #E5E7EB;
+      background: #F9FAFB;
+      font-size: 0.78rem;
+      color: var(--gray-500);
     }
 
     .footer-inner {
@@ -404,6 +474,32 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    /* OPTIONAL hero image block */
+    .hero-visual {
+      border-radius: var(--radius-lg);
+      border: 1px solid #E5E7EB;
+      background: #FFFFFF;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .hero-visual-placeholder {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      text-align: center;
+      padding: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -411,22 +507,28 @@
   <header>
     <div class="nav-wrap">
       <div class="nav-left">
-        <a href="https://vertex3d.com" class="logo" target="_blank" rel="noopener">
-          <img src="https://vertex3d.com/hs-fs/hubfs/Vertex-Logo-White-01.png?height=40&amp;name=Vertex-Logo-White-01.png&amp;width=150"
-               alt="Vertex Software logo" />
+        <a class="logo" href="https://vertex3d.com" target="_blank" rel="noopener">
+          <!-- Upload your logo into the repo and point src to it -->
+          <img src="vertex-logo.png" alt="Vertex Software logo" />
+          <div class="logo-text-block">
+            <div class="logo-title">Vertex Software</div>
+            <div class="logo-tagline">Cloud-native 3D • Netflix for CAD</div>
+          </div>
         </a>
-        <div class="logo-tagline">Netflix for CAD</div>
-        <div class="nav-pill">ACME • Private Preview</div>
+        <div class="nav-pill">Sub-Zero | Private preview</div>
       </div>
       <div class="nav-cta">
-        <button class="btn btn-outline" onclick="window.location.href='https://vertex3d.com/products';">
-          Explore Products
+        <button class="btn btn-outline"
+                onclick="window.location.href='https://vertex3d.com/products';">
+          Explore products
         </button>
-        <button class="btn btn-primary" onclick="window.location.href='https://vertex3d.com/demo';">
-          Get a Live Demo
+        <button class="btn btn-primary"
+                onclick="window.location.href='https://vertex3d.com/demo';">
+          Book a live demo
         </button>
       </div>
     </div>
+    <div class="accent-bar"></div>
   </header>
 
   <main>
@@ -434,110 +536,134 @@
     <section class="hero">
       <div class="section-inner hero-grid">
         <div>
-          <div class="eyebrow"><span></span> For ACME’s engineering & factory teams</div>
-          <h1>Stream your 3D, don’t ship your files.</h1>
+          <div class="eyebrow"><span></span> For Sub-Zero engineering, factory & service</div>
+          <h1>Stream your 3D models, not your CAD files.</h1>
           <p class="hero-sub">
-            Vertex turns ACME’s CAD and PLM data into a secure, live 3D environment
-            that anyone can use from a browser — engineering, factory, service, and suppliers —
-            with zero installs and no file transfers.
+            Vertex turns Sub-Zero’s CAD and PLM data into a secure, browser-based 3D experience.
+            Engineers, factory teams, and service partners can explore full assemblies—no installs,
+            no file transfers, and no performance bottlenecks.
           </p>
 
           <div class="hero-badges">
-            <div class="pill">No files on endpoints</div>
-            <div class="pill">Zero install • Any device</div>
-            <div class="pill">Built for Teamcenter, Windchill & more</div>
+            <div class="pill">Pixel streaming • No files on endpoints</div>
+            <div class="pill">Works with Teamcenter / Windchill</div>
+            <div class="pill">Built for premium dealer & service networks</div>
           </div>
 
           <div class="hero-cta-row">
             <button class="btn btn-primary"
                     onclick="window.location.href='https://vertex3d.com/demo';">
-              See Vertex on your models
+              See Vertex on Sub-Zero models
             </button>
             <button class="btn btn-outline"
-                    onclick="window.location.href='https://vertex3d.com/free-trial';">
-              Start a 30-day trial
+                    onclick="window.location.href='mailto:sales@vertex3d.com?subject=Vertex%20for%20Sub-Zero%20-%20Sample%20Assembly';">
+              Share a sample assembly
             </button>
           </div>
           <div class="note">
-            100% cloud native • Pixel streaming keeps IP in your control • Ideal for mobile and low-power devices.
+            100% cloud-native. CAD and PLM data stay in your environment—only encrypted pixels reach browsers.
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Vertex impact snapshot">
-          <h2>What changes for ACME with Vertex</h2>
-          <div class="hero-stat-grid">
-            <div>
-              <div class="stat-label">Engineering & Supplier Reviews</div>
-              <div class="stat-value">From hours to minutes</div>
-              <div class="muted">Stream full assemblies for joint reviews without packaging or translating files.</div>
+        <aside>
+          <div class="hero-card" aria-label="Vertex impact snapshot">
+            <h2>What changes for Sub-Zero with Vertex</h2>
+            <div class="hero-stat-grid">
+              <div>
+                <div class="stat-label">Design & DFMEA reviews</div>
+                <div class="stat-value">Faster decisions</div>
+                <div class="note">
+                  Bring engineering, marketing, and service into the same 3D view without moving heavy files around.
+                </div>
+              </div>
+              <div>
+                <div class="stat-label">Dealer & service access</div>
+                <div class="stat-value">60%+ productivity lift*</div>
+                <div class="note">
+                  Techs and partners see the exact configuration in 3D, not a PDF or catalog guess.
+                </div>
+              </div>
+              <div>
+                <div class="stat-label">IP & brand protection</div>
+                <div class="stat-value">Pixels, not files</div>
+                <div class="note">
+                  Luxury design IP stays in Sub-Zero’s cloud, even as more users gain 3D access.
+                </div>
+              </div>
+              <div>
+                <div class="stat-label">Time-to-value</div>
+                <div class="stat-value">Weeks, not years</div>
+                <div class="note">
+                  Deploy alongside your existing PLM and portals—no rip-and-replace or client installs.
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="stat-label">Factory & Service Teams</div>
-              <div class="stat-value">60%+ faster workflows*</div>
-              <div class="muted">Always-current 3D instructions and parts context, straight from PLM.</div>
-            </div>
-            <div>
-              <div class="stat-label">IP Protection</div>
-              <div class="stat-value">Pixels, not part files</div>
-              <div class="muted">CAD never lands on field laptops, supplier machines, or dealer tablets.</div>
-            </div>
-            <div>
-              <div class="stat-label">Time-to-Value</div>
-              <div class="stat-value">Weeks, not years</div>
-              <div class="muted">Cloud deployment + APIs slot into your existing PLM and portals.</div>
+            <p class="note" style="margin-top:0.9rem;">
+              *Representative improvements from global OEMs modernizing factory and service workflows with Vertex.
+            </p>
+          </div>
+
+          <!-- Optional hero visual; replace src with an exported slide image if you like -->
+          <div class="hero-visual" style="margin-top:1.25rem;">
+            <!-- <img src="hero-3d.png" alt="Vertex streaming 3D to laptop and tablet" /> -->
+            <div class="hero-visual-placeholder">
+              Add a hero image from your Vertex deck here (e.g., a screenshot of 3D streaming to multiple devices).
+              Upload it as <code>hero-3d.png</code> and replace this placeholder.
             </div>
           </div>
-          <p class="note" style="margin-top:0.9rem;">*Representative results from global OEMs using Vertex across service and factory workflows.</p>
         </aside>
       </div>
     </section>
 
-    <!-- PROBLEM / TODAY -->
+    <!-- TODAY'S REALITY -->
     <section>
       <div class="section-inner">
-        <div class="section-kicker">Today at most OEMs</div>
-        <h2 class="section-heading">3D is locked inside engineering. Everyone else works around it.</h2>
+        <div class="section-kicker">Today’s reality</div>
+        <h2 class="section-heading">3D is locked in engineering. Everyone else works around it.</h2>
         <p class="section-lede">
-          When every collaboration step depends on exporting, converting, zipping and emailing CAD,
-          decisions slow down and IP risk goes up. The pattern is the same across engineering,
-          factory, and supplier programs.
+          For most appliance manufacturers, every design or service conversation still depends on exporting,
+          converting, and emailing CAD files. That slows decisions and makes it hard to protect IP across
+          premium dealer and installer networks.
         </p>
 
         <div class="grid grid-2">
           <div class="card">
-            <h3>Engineering reviews</h3>
-            <p>Design reviews depend on sending heavy CAD files or screenshots around.</p>
+            <h3>Engineering & product teams</h3>
+            <p>Design reviews revolve around screenshots and heavy CAD sessions.</p>
             <ul>
-              <li>Large assemblies too big for most laptops.</li>
-              <li>Version confusion across email threads and shared drives.</li>
-              <li>Expensive workstations and licenses for basic reviewers.</li>
+              <li>Large fridge and range assemblies are too heavy for most laptops outside engineering.</li>
+              <li>Version confusion when files move through email and shared drives.</li>
+              <li>Upstream partners need input, but you don’t want to ship them full CAD.</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Factory & service operations</h3>
-            <p>Operators and technicians rarely see accurate 3D for the configuration in front of them.</p>
+            <h3>Factory build & custom paneling</h3>
+            <p>Complex, configurable SKUs demand accurate, visual build context.</p>
             <ul>
-              <li>Static PDFs that lag PLM by weeks or months.</li>
-              <li>Time lost hunting for the right view or part number.</li>
-              <li>Training new hires without intuitive, interactive visuals.</li>
+              <li>Operators rely on static PDFs that lag what’s actually in PLM.</li>
+              <li>Panel-ready and built-in variants make instructions harder to follow.</li>
+              <li>New hires learn from tribal knowledge instead of intuitive 3D views.</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Supplier collaboration & RFQ</h3>
-            <p>Sharing 3D with suppliers is slow and risky.</p>
+            <h3>Service & diagnostics</h3>
+            <p>Techs and call centers often don’t see the true installed configuration.</p>
             <ul>
-              <li>Manual packaging and translation into neutral formats.</li>
-              <li>Multiple tools and portals just to review one design.</li>
-              <li>Uncontrolled file copies sitting outside your network.</li>
+              <li>Identifying the right part can take multiple calls or visits.</li>
+              <li>Limited visuals for guided troubleshooting or “show me” support.</li>
+              <li>Repeat visits when the wrong part shows up at the customer’s home.</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Security & governance</h3>
-            <p>Every file you export is another copy to track, revoke, and audit.</p>
+            <h3>Security & brand risk</h3>
+            <p>Every exported CAD assembly is another uncontrolled copy to track.</p>
             <ul>
-              <li>IP scattered across laptops, emails, and third-party tools.</li>
-              <li>Difficult to enforce zero-trust and export control policies.</li>
-              <li>Compliance teams fighting a losing battle against “one more copy”.</li>
+              <li>Files on dealer and contractor laptops are hard to monitor or revoke.</li>
+              <li>Difficult to enforce zero-trust and export-control policies.</li>
+              <li>Premium design IP is more exposed than it needs to be.</li>
             </ul>
           </div>
         </div>
@@ -547,130 +673,130 @@
     <!-- VERTEX DIFFERENCE -->
     <section>
       <div class="section-inner">
-        <div class="section-kicker">The Vertex difference</div>
-        <h2 class="section-heading">Stream context-aware pixels from your PLM to any screen.</h2>
+        <div class="section-kicker">The Vertex approach</div>
+        <h2 class="section-heading">Stream context-aware pixels from PLM to any Sub-Zero stakeholder.</h2>
         <p class="section-lede">
-          Instead of sending part files out into the world, Vertex keeps ACME’s CAD and PLM data in
-          a secure cloud and streams only encrypted pixels to users. Everyone sees the same truth —
-          and ACME keeps control.
+          Vertex keeps CAD geometry and metadata in a secure cloud, then streams an interactive 3D experience
+          to any browser. Engineering, manufacturing, service, and partners all see the same truth—without
+          ever receiving a copy of the model.
         </p>
 
         <div class="grid grid-2">
           <div class="card">
-            <div class="tag">No Files</div>
-            <h3>Nothing to download. Nothing to clean up later.</h3>
+            <div class="tag">No local files</div>
+            <h3>IP stays with Sub-Zero, even as access expands.</h3>
             <p>
-              CAD and BOM data stay in your cloud. Vertex streams a live 3D view into a browser
-              session: engineering laptops, factory stations, tablets, or supplier devices.
+              CAD, BOM, and PMI are rendered in the cloud. Dealers, installers, and internal teams work
+              with pixels only—no STEP files wandering around the ecosystem.
             </p>
             <ul>
-              <li>Prevent uncontrolled file spread while enabling more access.</li>
-              <li>Support low-power hardware without local installs.</li>
-              <li>Aligns with zero-trust and export-control programs.</li>
+              <li>Supports zero-trust and export-control practices.</li>
+              <li>Reduces risk when working with global suppliers and installers.</li>
+              <li>Audit trails capture who saw what and when.</li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="tag">Pixel Streaming</div>
-            <h3>Massive models on everyday devices.</h3>
+            <div class="tag blue">Massive models, simple access</div>
+            <h3>Full appliances and kitchen systems on everyday devices.</h3>
             <p>
-              Vertex renders the heavy geometry in the cloud, then streams 30fps pixels to users.
-              Full-product or factory-scale models load in seconds instead of minutes.
+              Vertex handles heavy, multi-assembly appliances and kitchen systems, then streams them smoothly
+              to laptops and tablets—even on factory floors or in the field.
             </p>
             <ul>
-              <li>Handle multi-million part assemblies with ease.</li>
-              <li>Consistent performance across geographies.</li>
-              <li>No more “this model is too big for my machine”.</li>
+              <li>No special GPUs or desktop installs required.</li>
+              <li>Great for remote, hybrid, and distributed teams.</li>
+              <li>Cross-section, measure, explode, and markup tools in the browser.</li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="tag">Always Current</div>
-            <h3>In sync with Teamcenter, Windchill, Enovia, Infor & more.</h3>
+            <div class="tag orange">Always current</div>
+            <h3>Synced with PLM—no manual exports.</h3>
             <p>
-              Vertex Sync for PLM keeps the 3D representation aligned with PLM revisions and BOM changes,
-              so downstream teams always see the latest configuration.
+              Vertex Sync for PLM keeps 3D views aligned to Teamcenter or Windchill changes, so downstream
+              teams always see the latest configuration and options.
             </p>
             <ul>
-              <li>No manual exports or overnight conversion jobs.</li>
-              <li>Link snapshots and comments directly to the right revision.</li>
-              <li>One source of truth for engineering, factory, and service.</li>
+              <li>3D scenes update as engineering releases new variants.</li>
+              <li>Snapshots and comments tie back to the right revision.</li>
+              <li>One source of truth across engineering, factory, and service.</li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="tag">APIs & SDKs</div>
-            <h3>Fit into ACME’s portals and tools, not the other way around.</h3>
+            <div class="tag blue">APIs & SDKs</div>
+            <h3>Fits into Sub-Zero portals and tools.</h3>
             <p>
-              Use Vertex Connect, Engage, and the Vertex 3D Platform APIs to embed 3D into your existing
-              engineering portals, supplier apps, and analytics dashboards.
+              Use Vertex Connect and Engage to embed 3D into Sub-Zero’s engineering portals, dealer tools,
+              and service applications instead of standing up yet another silo.
             </p>
             <ul>
-              <li>Low-code integration for internal and external apps.</li>
-              <li>Role-based access controls and audit trails.</li>
-              <li>Ready for digital-thread and MBE initiatives.</li>
+              <li>REST APIs and web SDKs for custom experiences.</li>
+              <li>Role-based access to control what each group can see & do.</li>
+              <li>Ready for digital-thread and MBE programs.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- USE CASES -->
+    <!-- HIGH-IMPACT USE CASES -->
     <section>
       <div class="section-inner">
-        <div class="section-kicker">Where ACME feels value first</div>
-        <h2 class="section-heading">High-impact workflows Vertex can improve in 90 days.</h2>
+        <div class="section-kicker">High-impact starting points</div>
+        <h2 class="section-heading">Where Sub-Zero can see value in the first 90 days.</h2>
         <p class="section-lede">
-          Most customers start with one or two workflows, prove the impact, then expand.
-          Below are common starting points that map closely to ACME’s environment.
+          Most manufacturers start by modernizing one or two workflows, prove the impact, then expand.
+          For Sub-Zero’s premium appliances and dealer/service ecosystem, these are natural first steps.
         </p>
 
         <div class="grid grid-2">
           <div class="card">
-            <h3>1. Engineering & DFx reviews</h3>
-            <p>Browser-based access to full assemblies, PMI, and metadata.</p>
+            <h3>1. Cross-functional design reviews</h3>
+            <p>Get engineering, marketing, and service into the same interactive 3D view.</p>
             <ul>
-              <li>Run cross-functional reviews with no installs or file prep.</li>
+              <li>Review full fridge, range, and column assemblies in the browser.</li>
               <li>Capture decisions as 3D snapshots with comments and markups.</li>
-              <li>Shorten design cycles by removing file logistics from the loop.</li>
+              <li>Cut review cycle time by removing file prep from the critical path.</li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>2. Factory work instructions & quality</h3>
-            <p>Interactive 3D work instructions synced to PLM configuration.</p>
+            <h3>2. Factory build & quality for configurable SKUs</h3>
+            <p>Use always-current 3D work instructions for panel-ready and custom builds.</p>
             <ul>
-              <li>Operators see the exact configuration they’re building.</li>
-              <li>Reduce rework and assembly-related warranty claims.</li>
-              <li>Improve training and job satisfaction for new hires.</li>
+              <li>Operators see exactly what they’re building, not a generic line drawing.</li>
+              <li>Reduce rework and assembly-related quality escapes.</li>
+              <li>Improve training time and confidence for new hires.</li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>3. Supplier RFQ & design collaboration</h3>
-            <p>Secure shared workspaces instead of sending CAD packages.</p>
+            <h3>3. Service & dealer troubleshooting</h3>
+            <p>Give techs and call-center teams live visuals instead of static PDFs.</p>
             <ul>
-              <li>Suppliers view, measure, and comment in the browser.</li>
-              <li>Eliminate translation cycles and unmanaged file copies.</li>
-              <li>Accelerate RFQ turnaround and improve quote quality.</li>
+              <li>Use 3D to walk through common diagnostic flows with customers.</li>
+              <li>Identify the right part on the first call using visual context.</li>
+              <li>Fewer repeat visits, higher first-time-fix rate, better customer experience.</li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>4. Service & aftermarket parts</h3>
-            <p>3D-driven part identification and guided service procedures.</p>
+            <h3>4. Supplier & co-design collaboration</h3>
+            <p>Invite key suppliers into secure, zero-file 3D workspaces.</p>
             <ul>
-              <li>Technicians identify the right part on the first try.</li>
-              <li>Fewer repeat visits, faster time-to-repair.</li>
-              <li>Higher customer uptime and parts revenue.</li>
+              <li>Eliminate CAD translation cycles for RFQs and design reviews.</li>
+              <li>Ensure each supplier sees only the geometry they’re allowed to see.</li>
+              <li>Shorten collaboration cycles and improve quote quality.</li>
             </ul>
           </div>
         </div>
 
         <div class="badge-row">
           <div class="badge">Proven at global OEM scale</div>
-          <div class="badge">Supports 50M+ parts & 60K+ PLM changes per day</div>
-          <div class="badge">Hundreds of thousands of users across factories & service</div>
+          <div class="badge">Handles tens of millions of parts & daily PLM changes</div>
+          <div class="badge">Built for engineering, factory, service & supply chain</div>
         </div>
       </div>
     </section>
@@ -681,11 +807,11 @@
         <div class="cta-box">
           <div>
             <div class="section-kicker">Next step</div>
-            <h2>See one of your assemblies running in Vertex.</h2>
+            <h2>Put one Sub-Zero assembly into Vertex and see the difference.</h2>
             <p>
-              The fastest way to evaluate Vertex is to see your own 3D data streamed into the browser.
-              We’ll load a representative model, invite a few stakeholders, and walk through an
-              engineering or factory scenario that matters to ACME.
+              We’ll load a representative refrigerator or range assembly into Vertex, invite a small
+              cross-functional group from Sub-Zero, and walk through a real scenario—design review,
+              factory build, or service troubleshooting.
             </p>
           </div>
           <div>
@@ -695,13 +821,13 @@
                 Book a 20-minute session
               </button>
               <button class="btn btn-outline"
-                      onclick="window.location.href='mailto:sales@vertex3d.com?subject=Vertex%20for%20ACME%20-%20Sample%20Model';">
+                      onclick="window.location.href='mailto:sales@vertex3d.com?subject=Vertex%20for%20Sub-Zero%20-%20Sample%20Model';">
                 Email us a sample model
               </button>
             </div>
             <div class="note">
-              We’ll keep everything read-only and secure. No installs, no disruption — just a clear view
-              of how Vertex would extend the reach of 3D at ACME.
+              No installs, no disruption—just a clear, shared view of how Vertex would extend the reach
+              of Sub-Zero’s 3D data across engineering, factory, and service.
             </div>
           </div>
         </div>
@@ -718,7 +844,6 @@
 </div>
 
 <script>
-  // Simple year setter for footer
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
