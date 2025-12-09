@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- IMPORTANT: Place hero-3d.png in the SAME FOLDER as this index.html
+       or update the src path in the .hero-visual <img> tag below. -->
+
   <style>
     :root {
       /* Vertex primary palette (from brand guidelines) */
@@ -67,6 +70,7 @@
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid #E5E7EB;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
     }
 
     .nav-wrap {
@@ -82,7 +86,7 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.9rem;
       min-width: 0;
     }
 
@@ -117,13 +121,15 @@
       color: var(--gray-500);
     }
 
+    /* UPDATED: Make Sub-Zero pill bigger & more prominent */
     .nav-pill {
-      font-size: 0.75rem;
-      padding: 0.28rem 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.35rem 1rem;
       border-radius: 999px;
-      border: 1px solid #E5E7EB;
-      background: #F9FAFB;
-      color: var(--gray-600);
+      border: 1px solid #BFDBFE;
+      background: #E1F4FF;
+      color: var(--light-blue);
       white-space: nowrap;
     }
 
@@ -212,14 +218,16 @@
       }
     }
 
+    /* UPDATED: Make eyebrow line larger & stronger */
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.18rem 0.7rem;
+      padding: 0.24rem 0.85rem;
       border-radius: 999px;
       background: #E1F4FF;
-      font-size: 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--light-blue);
@@ -227,8 +235,8 @@
     }
 
     .eyebrow span {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
       background: var(--light-green);
     }
@@ -303,7 +311,7 @@
       }
     }
 
-    /* UPDATED per your request: bigger, bold, Vertex blue */
+    /* Bigger, bold, Vertex blue stat labels */
     .stat-label {
       font-size: 0.86rem;
       font-weight: 600;
@@ -476,7 +484,7 @@
       align-items: center;
     }
 
-    /* OPTIONAL hero image block */
+    /* HERO IMAGE BLOCK – updated to actually use hero-3d.png */
     .hero-visual {
       border-radius: var(--radius-lg);
       border: 1px solid #E5E7EB;
@@ -493,13 +501,6 @@
       height: auto;
       display: block;
       object-fit: cover;
-    }
-
-    .hero-visual-placeholder {
-      font-size: 0.8rem;
-      color: var(--gray-500);
-      text-align: center;
-      padding: 1rem;
     }
   </style>
 </head>
@@ -604,13 +605,9 @@
             </p>
           </div>
 
-          <!-- Optional hero visual; replace src with an exported slide image if you like -->
+          <!-- HERO IMAGE: this will show hero-3d.png if it's in the same folder as index.html -->
           <div class="hero-visual" style="margin-top:1.25rem;">
-            <!-- <img src="hero-3d.png" alt="Vertex streaming 3D to laptop and tablet" /> -->
-            <div class="hero-visual-placeholder">
-              Add a hero image from your Vertex deck here (e.g., a screenshot of 3D streaming to multiple devices).
-              Upload it as <code>hero-3d.png</code> and replace this placeholder.
-            </div>
+            <img src="hero-3d.png" alt="Vertex streaming 3D to multiple devices" />
           </div>
         </aside>
       </div>
